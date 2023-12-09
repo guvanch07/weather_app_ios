@@ -7,35 +7,33 @@
 
 import Foundation
 
-class HttpService{
+final class HttpService{
     
     func get<T:Codable>(endPoint:String, type: T.Type) async throws -> T {
-        
         guard let url = URL(string: endPoint) else {
             print("error in url")
             throw UserError.badUrl
             }
         var request = URLRequest(url: url)
-        
+        // handle token if is exist
         request.httpMethod = "GET"
         let (data,response) = try await URLSession.shared.data(for: request)
-        
+    
         let httpResponse = response as? HTTPURLResponse
-        
         guard httpResponse?.statusCode == 200 else {
             switch httpResponse?.statusCode {
             case 400:
-                throw UserError.badUrl
+                throw UserError.badRequest
             case 401:
                 throw UserError.noAuth
             case 403:
-                throw UserError.badRequest
+                throw UserError.noAuth
             case 404:
-                throw UserError.noData
+                throw UserError.notFound
             case 500:
-                throw UserError.badUrl
+                throw UserError.serverInternal
             default:
-                throw UserError.noInternet
+                throw UserError.unknown
             }
         }
         do{
@@ -59,9 +57,7 @@ class HttpService{
             var request = URLRequest(url: url)
             request.httpMethod = "POST"
             request.httpBody = data
-            if token != nil {
-                request.setValue(token, forHTTPHeaderField: "Authorization")
-            }
+            // handle jwt token if is exist
             request.addValue("application/json", forHTTPHeaderField: "Accept")
             request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -70,20 +66,19 @@ class HttpService{
             let httpResponse = response as? HTTPURLResponse
             
             guard httpResponse?.statusCode == 200 else {
-                logger.error("\(httpResponse?.statusCode ?? 0)")
                 switch httpResponse?.statusCode {
                 case 400:
-                    throw UserError.badUrl
+                    throw UserError.badRequest
                 case 401:
                     throw UserError.noAuth
                 case 403:
-                    throw UserError.badRequest
+                    throw UserError.noAuth
                 case 404:
-                    throw UserError.noData
+                    throw UserError.notFound
                 case 500:
-                    throw UserError.badUrl
+                    throw UserError.serverInternal
                 default:
-                    throw UserError.noInternet
+                    throw UserError.unknown
                 }
             }
             let answer = try JSONDecoder().decode(T.self, from: data)

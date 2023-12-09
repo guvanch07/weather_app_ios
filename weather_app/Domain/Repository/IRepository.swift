@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+protocol IRepository{
+    func getCurrentWeather(lat: Double, lon: Double) async throws -> CurrentWeatherModel
+}
