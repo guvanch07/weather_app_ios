@@ -8,12 +8,29 @@
 import SwiftUI
 import SwiftData
 
+let lon = 27.5590
+let lat = 53.9006
+
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var items: [Item]
-
+    @StateObject var locationManager = LocationManager()
+    
     var body: some View {
-        MainWeatherUIView()
+        
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [.purple, .pink.opacity(0.3), .pink]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+            if let location = locationManager.location{
+                Home(lat: location.latitude, lon: location.longitude)
+            }else {
+                Spacer()
+                ProgressView()
+                Spacer()
+            }
+        }
+        .onAppear {
+            locationManager.requestLocation()
+        }
     }
 }
 

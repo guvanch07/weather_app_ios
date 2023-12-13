@@ -22,5 +22,19 @@ class Repository: IRepository{
         return response
     }
     
+    func getForcastWeather(lat: Double, lon: Double) async throws -> ForcastWeatherModel {
+        let response = try await httpService.get(
+            endPoint: "\(AppCons.baseUrl)onecall?lat=\(lat)&lon=\(lon)&appid=\(AppCons.appId)",
+            type: ForcastWeatherModel.self)
+        return response
+    }
+    
+    func searchWeather(city:String) async throws -> SearchWeatherModel {
+        let url = "http://api.openweathermap.org/geo/1.0/"
+        let response = try await httpService.get(
+            endPoint: "\(url)direct?q=\(city)&appid=\(AppCons.appId)",
+            type: SearchWeatherModel.self)
+        return response
+    }
     
 }

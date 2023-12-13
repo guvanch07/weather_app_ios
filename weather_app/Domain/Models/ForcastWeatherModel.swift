@@ -52,6 +52,7 @@ struct Current: Codable {
     }
 }
 
+
 // MARK: - Snow
 struct Snow: Codable {
     let the1H: Double
