@@ -14,7 +14,7 @@ struct HourlyView: View {
         BlurView(style: .systemMaterialLight, alpha: 0.5){
                 ScrollView(.horizontal) {
                     HStack(spacing: 10) {
-                        ForEach(hours.prefix(6),id: \.dt) { item in
+                        ForEach(hours.prefix(9),id: \.dt) { item in
                             HourlyItem(item: item)
                         }
                     }

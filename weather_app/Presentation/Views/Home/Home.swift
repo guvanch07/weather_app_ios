@@ -12,12 +12,15 @@ struct Home: View {
     let lat: Double
     let lon: Double
     var body: some View {
-        VStack(spacing: 30){
+        ScrollView(.vertical){
             if vm.isLoading {
                 ProgressView()
             }else{
                 MainWeatherUIView(current: vm.currentWeather)
+                Spacer().frame(height: 20)
                 HourlyView(hours: vm.forcastWeather?.hourly ?? [])
+                Spacer().frame(height: 20)
+                DailyView(days: vm.forcastWeather?.daily ?? [])
             }
         }
         .onAppear{

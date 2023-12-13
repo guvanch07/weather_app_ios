@@ -24,6 +24,7 @@
 		C54269EC2B291F1B009F2AEF /* ConvertorTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54269EB2B291F1B009F2AEF /* ConvertorTemp.swift */; };
 		C54269EF2B2927EB009F2AEF /* HourlyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54269EE2B2927EB009F2AEF /* HourlyView.swift */; };
 		C54269F12B293019009F2AEF /* HourlyItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54269F02B293019009F2AEF /* HourlyItem.swift */; };
+		C54269F52B293D74009F2AEF /* DailyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C54269F42B293D74009F2AEF /* DailyView.swift */; };
 		C564BA862B28BFE600A8ABFC /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564BA852B28BFE600A8ABFC /* UserLocation.swift */; };
 		C564BA892B28D81600A8ABFC /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = C564BA882B28D81600A8ABFC /* Home.swift */; };
 		C5DC98272B228ABC002558EF /* weather_appApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5DC98262B228ABC002558EF /* weather_appApp.swift */; };
@@ -71,6 +72,7 @@
 		C54269EB2B291F1B009F2AEF /* ConvertorTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertorTemp.swift; sourceTree = "<group>"; };
 		C54269EE2B2927EB009F2AEF /* HourlyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyView.swift; sourceTree = "<group>"; };
 		C54269F02B293019009F2AEF /* HourlyItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyItem.swift; sourceTree = "<group>"; };
+		C54269F42B293D74009F2AEF /* DailyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyView.swift; sourceTree = "<group>"; };
 		C564BA852B28BFE600A8ABFC /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
 		C564BA882B28D81600A8ABFC /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		C5DC98232B228ABC002558EF /* weather_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weather_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,6 +147,7 @@
 		C52360C02B24AC89006FDF9F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				C54269F62B293D7E009F2AEF /* DailyView */,
 				C54269ED2B2927B4009F2AEF /* HourView */,
 				C564BA872B28D7DF00A8ABFC /* Home */,
 				C52360D92B24BF2A006FDF9F /* MainView */,
@@ -264,6 +267,14 @@
 				C54269F02B293019009F2AEF /* HourlyItem.swift */,
 			);
 			path = HourView;
+			sourceTree = "<group>";
+		};
+		C54269F62B293D7E009F2AEF /* DailyView */ = {
+			isa = PBXGroup;
+			children = (
+				C54269F42B293D74009F2AEF /* DailyView.swift */,
+			);
+			path = DailyView;
 			sourceTree = "<group>";
 		};
 		C564BA842B28BFA700A8ABFC /* Internal */ = {
@@ -471,6 +482,7 @@
 			files = (
 				C54269EC2B291F1B009F2AEF /* ConvertorTemp.swift in Sources */,
 				C54269F12B293019009F2AEF /* HourlyItem.swift in Sources */,
+				C54269F52B293D74009F2AEF /* DailyView.swift in Sources */,
 				C52360CF2B24B6D7006FDF9F /* CurrentWeatherDataModel.swift in Sources */,
 				C52360E42B2530AF006FDF9F /* ForcastWeatherUseCase.swift in Sources */,
 				C52360D32B24B858006FDF9F /* Repository_Impl.swift in Sources */,

@@ -36,6 +36,14 @@ extension Double{
         let hour = calendar.component(.hour, from: date)
         return hour
     }
+    var secondToDay: String {
+        let date = Date(timeIntervalSince1970: self)
+        let calendar = Calendar.current
+        let weekdayNumber = calendar.component(.weekday, from: date)
+        let formatter = DateFormatter()
+            let weekdayName = formatter.weekdaySymbols[weekdayNumber - 1]
+        return weekdayName
+    }
     var secondToHour24: String {
         let date = Date(timeIntervalSince1970: self)
         let formatter = DateFormatter()
