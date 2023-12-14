@@ -21,7 +21,6 @@ final class HttpService{
     
         let httpResponse = response as? HTTPURLResponse
         guard httpResponse?.statusCode == 200 else {
-            print(httpResponse?.statusCode)
             switch httpResponse?.statusCode {
             case 400:
                 throw UserError.badRequest

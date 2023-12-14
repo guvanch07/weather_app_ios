@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct SearchView: View {
-    
+    let vm: CurrentWeatherViewModel
     @StateObject private var searchVm = SearchWeatherViewModel()
+    @StateObject private var detailVm = DetailWeatherViewModel()
     @State private var searchText = ""
     @Binding var showSearchBar: Bool
     @State private var showingSheet = false
@@ -41,6 +42,9 @@ struct SearchView: View {
                             showingSheet = true
                             searchText = ""
                             showSearchBar = false
+                            Task{
+                                await detailVm.getDetailWeather(lat: item.lat ,lon: item.lon)
+                            }
                         }
                     }
                 }
@@ -51,7 +55,7 @@ struct SearchView: View {
                 Spacer()
             }
         }.sheet(isPresented: $showingSheet){
-            CityDetailView()
+            CityDetailView(vm: detailVm)
         }
         .alert(isPresented: $searchVm.hasError, error: searchVm.error) {
             Button{  }

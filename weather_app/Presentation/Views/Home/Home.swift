@@ -35,7 +35,7 @@ struct Home: View {
         .onPreferenceChange(ViewOffsetKey.self) { value in
             showSearchBar = value < -50
         }.overlay(
-            SearchView(showSearchBar: $showSearchBar)
+            SearchView(vm: vm, showSearchBar: $showSearchBar)
         )
         .onAppear{
             Task{ await vm.getWeather(lat: lat, lon: lon) }
