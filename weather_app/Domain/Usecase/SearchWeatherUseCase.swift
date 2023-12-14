@@ -14,7 +14,7 @@ class SearchWeatherUseCase {
         repository = Repository(httpService: HttpService())
     }
     
-    func execute(city: String) async throws -> SearchWeatherModel {
+    func execute(city: String) async throws -> [SearchWeatherModelElement] {
         try await repository.searchWeather(city: city)
     }
 }

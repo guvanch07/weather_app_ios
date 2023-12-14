@@ -10,5 +10,5 @@ import Foundation
 protocol IRepository{
     func getCurrentWeather(lat: Double, lon: Double) async throws -> CurrentWeatherModel
     func getForcastWeather(lat: Double, lon: Double) async throws -> ForcastWeatherModel
-    func searchWeather(city: String) async throws -> SearchWeatherModel
+    func searchWeather(city: String) async throws -> [SearchWeatherModelElement]
 }

@@ -17,20 +17,18 @@ struct ContentView: View {
     @StateObject var locationManager = LocationManager()
     
     var body: some View {
-        
-        ZStack{
-            LinearGradient(gradient: Gradient(colors: [.purple, .pink.opacity(0.3), .pink]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
-            if let location = locationManager.location{
-                Home(lat: location.latitude, lon: location.longitude)
-            }else {
-                Spacer()
-                ProgressView()
-                Spacer()
+    
+            ZStack{
+                LinearGradient(gradient: Gradient(colors: [.purple, .pink.opacity(0.3), .pink]), startPoint: .topLeading, endPoint: .bottomTrailing).edgesIgnoringSafeArea(.all)
+                if let location = locationManager.location{
+                    Home(lat: location.latitude, lon: location.longitude)
+                }else {
+                    Spacer()
+                    ProgressView()
+                    Spacer()
+                }
             }
-        }
-        .onAppear {
-            locationManager.requestLocation()
-        }
+        
     }
 }
 

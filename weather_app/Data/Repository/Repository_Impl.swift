@@ -29,11 +29,11 @@ class Repository: IRepository{
         return response
     }
     
-    func searchWeather(city:String) async throws -> SearchWeatherModel {
-        let url = "http://api.openweathermap.org/geo/1.0/"
+    func searchWeather(city:String) async throws -> [SearchWeatherModelElement] {
+        let url = "https://api.openweathermap.org/geo/1.0/direct"
         let response = try await httpService.get(
-            endPoint: "\(url)direct?q=\(city)&appid=\(AppCons.appId)",
-            type: SearchWeatherModel.self)
+            endPoint: "\(url)?q=\(city)&appid=\(AppCons.appId)",
+            type: [SearchWeatherModelElement].self)
         return response
     }
     

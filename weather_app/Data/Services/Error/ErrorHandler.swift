@@ -27,7 +27,7 @@ enum UserError: LocalizedError{
         case .custom(let error):
             return error.localizedDescription
         case .noData:
-            return "Not Found"
+            return "No Data"
         case .noAuth:
             return "Fail with authorization"
         case .serverInternal:

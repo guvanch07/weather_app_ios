@@ -11,9 +11,10 @@ import Foundation
 // MARK: - SearchWeatherModelElement
 struct SearchWeatherModelElement: Codable {
     let name: String
-    let localNames: [String: String]
+    let localNames: [String: String]?
     let lat, lon: Double
-    let country, state: String
+    let country: String
+    let state: String?
 
     enum CodingKeys: String, CodingKey {
         case name
@@ -22,4 +23,3 @@ struct SearchWeatherModelElement: Codable {
     }
 }
 
-typealias SearchWeatherModel = [SearchWeatherModelElement]
